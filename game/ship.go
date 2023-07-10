@@ -5,6 +5,13 @@ type Coordinate struct {
 	Y int
 }
 
+func NewCoordinate(x, y int) Coordinate {
+	return Coordinate{
+		X: x,
+		Y: y,
+	}
+}
+
 func (c *Coordinate) IsValid() bool {
 	return c.X >= 0 && c.Y >= 0
 }

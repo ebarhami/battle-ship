@@ -26,12 +26,13 @@ func NewPlayer(boardSize int) *Player {
 }
 
 func (p *Player) Hit(otherPlayer *Player, coord Coordinate) error {
+	otherPlayerGridSize := len(otherPlayer.Board.Grid)
 	if p.Id == otherPlayer.Id {
 		return errors.New("Friendly Fire")
 	}
-	if !coord.IsValid() || coord.X >= len(otherPlayer.Board.Grid) || coord.Y >= len(otherPlayer.Board.Grid) {
+	if !coord.IsValid() || coord.X >= otherPlayerGridSize || coord.Y >= otherPlayerGridSize {
 		return errors.New(fmt.Sprintf("Coordinate is invalid, Player %v has board with size %d",
-			otherPlayer.Id, len(otherPlayer.Board.Grid)))
+			otherPlayer.Id, otherPlayerGridSize))
 	}
 
 	if otherPlayer.Board.FireCoordinate(coord) { // is hit
