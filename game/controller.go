@@ -5,6 +5,10 @@ type Game struct {
 }
 
 func NewGame(nPlayers int, boardSize int) *Game {
+	if nPlayers != 2 {
+		return nil
+	}
+
 	players := make([]*Player, nPlayers)
 	for i := 0; i < nPlayers; i++ {
 		players[i] = NewPlayer(boardSize)
@@ -22,8 +26,9 @@ func (g *Game) GetWinnerSoFar() (winner *Player, isDraw bool) {
 			winner = p
 		}
 	}
+	// check whether there are two player with the same score, it is draw
 	for _, p := range g.Players {
-		if p.Score == winner.Score && p.Id != winner.Id { // if there are two player with the same score, it is draw
+		if p.Score == winner.Score && p.Id != winner.Id {
 			winner = nil
 			isDraw = true
 			return

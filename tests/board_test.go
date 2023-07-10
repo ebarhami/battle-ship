@@ -63,3 +63,26 @@ func TestFireCoordinate_InvalidCoordinate(t *testing.T) {
 
 	board.Print()
 }
+
+func TestPlaceShip_Valid(t *testing.T) {
+	initTest()
+
+	// Place the third ship
+	ship3 := game.NewShip(game.Coordinate{X: 4, Y: 0})
+	success := board.PlaceShip(ship3)
+
+	assert.True(t, success)
+	assert.Equal(t, 3, len(board.Ships))
+	assert.Equal(t, 3, len(board.GridToShips))
+}
+
+func TestPlaceShip_PlaceShipsInTheSameCoordinate(t *testing.T) {
+	initTest()
+
+	// Place the same ship2
+	success := board.PlaceShip(ship2)
+
+	assert.False(t, success)
+	assert.Equal(t, 2, len(board.Ships))
+	assert.Equal(t, 2, len(board.GridToShips))
+}

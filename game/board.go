@@ -27,6 +27,9 @@ func NewBoard(size int) *Board {
 
 func (b *Board) PlaceShip(ship *Ship) bool {
 	canPlace := b.canPlace(ship)
+	if !canPlace {
+		return false
+	}
 
 	// place the ship
 	b.Ships = append(b.Ships, ship)

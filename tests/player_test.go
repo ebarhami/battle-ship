@@ -30,7 +30,7 @@ func TestPlayerHit_OutOfBound(t *testing.T) {
 	assert.NotNil(t, err)
 }
 
-func TestPlayerHit_DoubleHit(t *testing.T) {
+func TestPlayerHit_Hit(t *testing.T) {
 	player1 := game.NewPlayer(boardSize)
 	player2 := game.NewPlayer(boardSize)
 	player2.Board.PlaceShip(game.NewShip(game.NewCoordinate(2, 2)))
