@@ -9,3 +9,15 @@ type Player struct {
 	Board *Board
 	Score int
 }
+
+func NewPlayer(boardSize int) *Player {
+	board := NewBoard(boardSize)
+	uuid, err := uuid.NewUUID()
+	if err != nil {
+		return nil
+	}
+	return &Player{
+		Id:    uuid,
+		Board: board,
+	}
+}

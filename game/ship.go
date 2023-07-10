@@ -14,3 +14,14 @@ type Ship struct {
 	IsHit    bool
 	Position Coordinate
 }
+
+func NewShip(name string, position Coordinate) *Ship {
+	return &Ship{
+		Name:     name,
+		Position: position,
+	}
+}
+
+func (s *Ship) Hit() {
+	s.IsHit = true
+}
