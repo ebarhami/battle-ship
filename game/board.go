@@ -63,6 +63,7 @@ func (b *Board) Print() {
 		}
 		fmt.Printf("\n")
 	}
+	fmt.Printf("\n")
 }
 
 func (b *Board) canPlace(ship *Ship) bool {
