@@ -13,3 +13,20 @@ func NewGame(nPlayers int, boardSize int) *Game {
 		Players: players,
 	}
 }
+
+func (g *Game) GetWinnerSoFar() (winner *Player, isDraw bool) {
+	score := 0
+	for _, p := range g.Players {
+		if p.Score > score {
+			score = p.Score
+			winner = p
+		}
+	}
+	for _, p := range g.Players {
+		if p.Score == winner.Score && p.Id != winner.Id { // if there are two player with the same score, it is draw
+			winner = nil
+			isDraw = true
+		}
+	}
+	return
+}
