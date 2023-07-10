@@ -10,14 +10,12 @@ func (c *Coordinate) IsValid() bool {
 }
 
 type Ship struct {
-	Name     string
 	IsHit    bool
 	Position Coordinate
 }
 
-func NewShip(name string, position Coordinate) *Ship {
+func NewShip(position Coordinate) *Ship {
 	return &Ship{
-		Name:     name,
 		Position: position,
 	}
 }
